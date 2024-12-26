@@ -1,1 +1,2 @@
-import game
+from game import dice
+dice.test()
