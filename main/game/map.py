@@ -11,10 +11,13 @@ class Map:
             self.map = data
     
 class test:
-    def __init__(self,path):
-        self.path = path
+    def __init__(self):
         self.map_aray = {[
-            [[]]
+            [[0],[0],[0],[0],[0]],
+            [[0],[0],[0],[0],[0]],
+            [[0],[0],[0],[0],[0]],
+            [[0],[0],[0],[0],[0]],
+            [[0],[0],[0],[0],[0]],
     ]}
     
     
