@@ -9,40 +9,37 @@ class Player:
         self.player_direction = None
     def move(self,x,y):
         self.character_positions += [x,y]
-        out = [self.character_positions]
         if x > 0:
-            out.append("n")
-        if x [0] > 0:
-            out.append("s")
-        if y [1] < 0:
-            out.append("e")
-        if y [1] > 0:
-            out.append("w")
-        return out
-
-
-
+            self.player_direction = "right"
+        elif x < 0:
+            self.player_direction = "left"
+        elif y > 0:
+            self.player_direction = "down"
+        elif y < 0:
+            self.player_direction = "up"
+        
 
 class Cam:
-    
     def __init__(self, game_map, ):
         self.game_map = game_map["game_map"]
         self.player = Player()
         self.view_port = [[[]]]
-
-    def create_view_port(self,view_size = [0,0],view_position=[0,0]):
-        self.view_size = view_size
-        self.view_position = view_position
-        for self.view_position[0] in range(self.view_size[0]):
-            for self.view_position[1] in range(self.view_size[1]):
-                for iz in range(self.game_map[0][0]):
-                    self.view_port.append(self.game_map[0][0][0])
-                
-        return self.view_port
-
-
-
+        self.view_size = [5,5]
+        self.view_position = [0,0]
+        
+    def update_view_port(self):
+        for x in range(self.view_size[0]):
+            for y in range(self.view_size[1]):
+                for z in range(len(self.game_map[x][y])):
+                    self.view_port[x][y].append(self.game_map[x][y][z])
+        pprint(self.view_port)
     
+    def move_view_port(self, ):
+        pass
+        
+        
+    
+
     def move_player (self):
         pass
 
@@ -76,4 +73,5 @@ class J:
 
 if __name__ == "__main__":
     c = Cam(data)
-    pprint(c.create_view_port())
+    c.update_view_port()
+    c.p()
