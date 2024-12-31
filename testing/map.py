@@ -1,6 +1,6 @@
 from pprint import pprint
 from copy import deepcopy 
-import json, numpy
+import json
 
 path = "map.json"
 class Player:
@@ -23,15 +23,19 @@ class Cam:
     def __init__(self, game_map, ):
         self.game_map = game_map["game_map"]
         self.player = Player()
-        self.view_port = [[[]]]
+        self.view_port = [[[],],]
         self.view_size = [5,5]
         self.view_position = [0,0]
         
     def update_view_port(self):
         for x in range(self.view_size[0]):
+            y=0
+            self.view_port[x].append([])
             for y in range(self.view_size[1]):
+                z = 0
+                self.view_port[x][y].append([])
                 for z in range(len(self.game_map[x][y])):
-                    self.view_port[x][y].append(self.game_map[x][y][z])
+                    self.view_port[x][y][z].append(self.game_map[x][y][z])
         pprint(self.view_port)
     
     def move_view_port(self, ):
